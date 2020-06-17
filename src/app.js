@@ -47,7 +47,7 @@ app.post("/repositories", (request, response) => {
     title,
     url,
     techs,
-    like: 0
+    likes: 0
   };
 
   repositories.push(repository);
@@ -88,10 +88,10 @@ app.post("/repositories/:id/like", (request, response) => {
   const repositoryIndex = repositories.findIndex(repository => repository.id === id)
   const repositoryUpdate = {
     ...repository,
-    like: repository.like +1, 
+    likes: repository.likes +1, 
   }
   repositories[repositoryIndex] = repositoryUpdate;
-  response.json({message: "teste Like"})
+  response.json(repositoryUpdate);
 });
 
 module.exports = app;
